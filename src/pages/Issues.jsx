@@ -19,7 +19,7 @@ export default function Issues() {
       <main>
         <section>
           <h1>Issues</h1>
-          <IssuesList labels={selectedLabels}/>
+          <IssuesList labels={selectedLabels} status={selectedStatus}/>
         </section>
         <aside>
           <LabelList selectedLabels={selectedLabels} onSelectLabels={onSelectLabelHandler} />
