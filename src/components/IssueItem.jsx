@@ -4,6 +4,7 @@ import { FaRegComment } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { relativeDate } from "../helpers/relativeDate";
 import { useUserData } from "../helpers/useUserData";
+import Label from "./Label";
 
 function IssueItem({ issue }) {
   const {
@@ -33,9 +34,7 @@ function IssueItem({ issue }) {
         <span>
           <Link to={`/issue/${number}`}>{title}</Link>
           {labels?.map((label) => (
-            <span key={label} className={`label red`}>
-              {label}
-            </span>
+            <Label key={label} labelData={label}/>
           ))}
         </span>
         <small>
