@@ -25,9 +25,9 @@ function IssueItem({ issue }) {
     <li>
       <div>
         {status === "done" || status === "cancelled" ? (
-          <GoIssueOpened style={{ color: "red" }} />
-        ) : (
           <GoIssueClosed style={{ color: "green" }} />
+          ) : (
+          <GoIssueOpened style={{ color: "red" }} />
         )}
       </div>
       <div className="issue-content">
