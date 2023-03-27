@@ -36,7 +36,7 @@ function IssueHeader({
         <span className="created-by">
           {createdUserData.isLoading ? "..." : createdUserData?.data?.name} 
         </span>{" "}
-        opened this issue {relativeDate(createdDate)}
+        opened this issue {relativeDate(createdDate)} . {comments.length} comments
       </div>
     </header>
   );
