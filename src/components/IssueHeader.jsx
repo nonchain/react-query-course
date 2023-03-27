@@ -1,5 +1,6 @@
 import React from "react";
 import { GoIssueOpened, GoIssueClosed } from "react-icons/go";
+import { possibleStatus } from '../helpers/defaultData';
 
 function IssueHeader({
   title,
@@ -9,11 +10,13 @@ function IssueHeader({
   createdDate,
   comments,
 }) {
+  const statusObj = possibleStatus.find(pStatus => pStatus.id === status);
+
   return (
     <header>
-      <h1>
+      <h2>
         {title} <span># {number}</span>
-      </h1>
+      </h2>
       <div>
         <span
           className={
@@ -21,10 +24,11 @@ function IssueHeader({
           }
         >
           {status === "done" || status === "cancelled" ? (
-            <GoIssueClosed style={{ color: "green" }} />
+            <GoIssueClosed />
           ) : (
-            <GoIssueOpened style={{ color: "red" }} />
+            <GoIssueOpened />
           )}
+          {statusObj?.label}
         </span>
       </div>
     </header>
