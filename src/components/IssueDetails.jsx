@@ -6,6 +6,8 @@ export default function IssueDetails() {
   const issueDetailsQuery = useIssueData(number);
 
   return <div className="issue-details">
-    
+    {issueDetailsQuery.isLoading ? <p>Loading...</p> : <>
+      <IssueHeader {...issueDetailsQuery?.data}/>
+    </>}
   </div>;
 }
