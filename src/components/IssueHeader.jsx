@@ -1,6 +1,8 @@
 import React from "react";
 import { GoIssueOpened, GoIssueClosed } from "react-icons/go";
 import { possibleStatus } from '../helpers/defaultData';
+import { useUserData } from "../helpers/useUserData";
+import { relativeDate } from "../helpers/relativeDate";
 
 function IssueHeader({
   title,
@@ -10,6 +12,7 @@ function IssueHeader({
   createdDate,
   comments,
 }) {
+  const createdUserData = useUserData(createdBy);
   const statusObj = possibleStatus.find(pStatus => pStatus.id === status);
 
   return (
@@ -30,6 +33,10 @@ function IssueHeader({
           )}
           {statusObj?.label}
         </span>
+        <span className="created-by">
+          {createdUserData.isLoading ? "..." : createdUserData?.data?.name} 
+        </span>{" "}
+        opened this issue {relativeDate(createdDate)}
       </div>
     </header>
   );
