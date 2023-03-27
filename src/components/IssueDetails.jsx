@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useIssueData } from "../helpers/useIssueData";
+import IssueHeader from "./IssueHeader";
 
 export default function IssueDetails() {
   const { number } = useParams();
