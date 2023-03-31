@@ -20,6 +20,7 @@ export default function IssuesList({ labels, status }) {
       fetch(`/api/search/issues?q=${searchValue}`).then((res) => res.json()),
     {
       enabled: searchValue.length > 0,
+      staleTime: Infinity,
     }
   );
 
