@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import IssueItem from "./IssueItem";
 import { useState } from "react";
+import { fetchWithError } from "../helpers/fetchWithError";
 
 export default function IssuesList({ labels, status }) {
   const [searchValue, setSearchValue] = useState("");
@@ -10,9 +11,7 @@ export default function IssuesList({ labels, status }) {
     const labelsQueryString = labels
       ?.map((label) => `labels[]=${label}`)
       .join("&");
-    return fetch(`/api/issues?${labelsQueryString}&status=${status}`).then(
-      (res) => res.json()
-    );
+    return fetchWithError(`/api/issues?${labelsQueryString}&status=${status}`)
   });
   const searchQuery = useQuery(
     ["issues", "search", searchValue],
@@ -26,6 +25,7 @@ export default function IssuesList({ labels, status }) {
 
   return (
     <div>
+      {issuesQuery.isError && <p>{issuesQuery.error.message}</p>}
       <form
         onSubmit={(event) => {
           event.preventDefault();
