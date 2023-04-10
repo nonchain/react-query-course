@@ -2,11 +2,18 @@ import { Route, Routes, Link, useMatch } from "react-router-dom";
 import Issues from "./pages/Issues";
 import Issue from "./pages/Issue";
 import AddIssue from "./pages/AddIssue";
+import { useIsFetching } from "react-query";
+import Loader from "./components/Loader";
 
 function App() {
+  const globalFetching = useIsFetching();
   const isRootPath = useMatch({ path: "/", end: true });
+
   return (
     <div className="App">
+      <div className="fetching-indicator">
+        {globalFetching ? <Loader /> : null}
+      </div>
       {!isRootPath ? (
         <Link to="/">Back to Issues List</Link>
       ) : (
