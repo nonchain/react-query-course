@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import IssueItem from "./IssueItem";
 import { useState } from "react";
 import { fetchWithError } from "../helpers/fetchWithError";
+import Loader from "./Loader";
 
 export default function IssuesList({ labels, status }) {
   const [searchValue, setSearchValue] = useState("");
@@ -50,6 +51,7 @@ export default function IssuesList({ labels, status }) {
       ) : searchQuery.fetchStatus === "idle" && searchQuery.isLoading ? (
         <>
           <h2>Issues List</h2>
+          {issuesQuery.isFetching && <Loader />}
           <ul className="issues-list">
             {issuesQuery.data?.map((issue) => (
               <IssueItem key={issue?.id} issue={issue} />
