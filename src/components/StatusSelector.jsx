@@ -8,10 +8,10 @@ const possibleStatus = [
   {id: "cancelled", label: "Cancelled"},
 ]
 
-function StatusSelector({ value, onChange }) {
+function StatusSelector({ value, onChange, title }) {
   return (
     <select name="status" id="issues-status" className='status-select' value={value} onChange={onChange}>
-      <option value="">Select a status</option>
+      {title ? <option value="">{title}</option> : null}
       {
         possibleStatus.map(option => <option key={option.id} value={option.id}>{option.label}</option>)
       }
