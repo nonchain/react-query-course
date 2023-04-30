@@ -25,7 +25,7 @@ export default function Issues() {
         </section>
         <aside>
           <LabelList selectedLabels={selectedLabels} onSelectLabels={onSelectLabelHandler} />
-          <StatusSelector value={selectedStatus} onChange={({target}) => setSelectedStatus(target?.value)}/>
+          <StatusSelector title="Select a status to filter" value={selectedStatus} onChange={({target}) => setSelectedStatus(target?.value)}/>
           <hr />
           <Link to="/add" className="button">
             Add issue
